@@ -1,11 +1,20 @@
 from django.shortcuts import render, redirect
-from .models import Room
+from django.db.models import Q
+from .models import Room, Topic
 from .forms import RoomForm
 
 
 def home(request):
-    rooms = Room.objects.all()
-    context = {"rooms": rooms}
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    # icontains represent type of filter (i) for case insensetive and contain for match with part of the string
+    rooms = Room.objects.filter(
+        Q(topic__name__icontains=q) | # get the attr (name) of object (topic) by __
+        Q(name__icontains=q) |
+        Q(description__icontains=q)
+        ) 
+    room_count = rooms.count()
+    topics = Topic.objects.all()
+    context = {"rooms": rooms, 'topics': topics, 'room_count': room_count}
     return render(request, "base/home.html", context)
 
 
