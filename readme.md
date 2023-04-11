@@ -1,6 +1,6 @@
-###This repo is website that make the user to able to create chat room to a specific topic.
+### This repo is website that make the user to able to create chat room to a specific topic.
 
-####To run the server follow these instructions:
+#### To run the server follow these instructions:
 - git clone https://github.com/mahmodDAHOL/chat-room_app
 - cd chat-room_app
 - pip install virtualenv 
@@ -10,7 +10,7 @@
 - python manage.py runserver
 - open the link that showed from previous command.
 
-####requirements:
+#### requirements:
 - git 
 - pyhton 3.3 or higher 
 
